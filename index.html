@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Theo Thompson — Film Hero</title>
+<style>html,body{margin:0;background:#0B0A08}</style>
+</head>
+<body>
+<!-- ============================================================
+     THEO THOMPSON — scroll-scrubbed film hero
+     Standalone preview (GitHub Pages) AND the Squarespace Code Block.
+     Frames load from: (window.THEO_FILM_BASE || '') + 'film-frames/f_XXXX.jpg'
+     For Squarespace, set window.THEO_FILM_BASE to your GitHub Pages URL first.
+     ============================================================ -->
+<div id="tt-film" aria-label="Theo Thompson — from spark to New York">
+  <div class="tt-stage">
+    <canvas class="tt-canvas" aria-hidden="true"></canvas>
+    <div class="tt-glow" aria-hidden="true"></div>
+    <canvas class="tt-embers" aria-hidden="true"></canvas>
+    <div class="tt-vig" aria-hidden="true"></div>
+    <div class="tt-beats">
+      <div class="tt-beat tt-hero" data-in="-0.1" data-peak="0" data-out="0.14">
+        <p class="tt-kick">Creative · Operator · Senior Designer · New York</p>
+        <h1 class="tt-word"><span class="r"><span>Theo</span></span><span class="r"><span class="thin">Thompson</span></span></h1>
+        <p class="tt-sub">I design the systems that keep premium brands consistent — at scale.</p>
+      </div>
+      <div class="tt-beat tt-mid" data-in="0.30" data-peak="0.42" data-out="0.54"><h2>Every brand begins as a <em>spark.</em></h2></div>
+      <div class="tt-beat tt-fin" data-in="0.72" data-peak="0.9" data-out="2"><h2>No flicker.<br><em>No drift.</em></h2></div>
+    </div>
+    <div class="tt-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
+  </div>
+</div>
+
+<style>
+  #tt-film{--gold:#E9C36A;--bone:#F2ECDE;--stone:#9A9084;position:relative;height:640vh;margin:0;
+    font-family:"Archivo","Helvetica Neue",Arial,sans-serif}
+  #tt-film .tt-stage{position:sticky;top:0;height:100svh;height:100vh;overflow:hidden;background:#000}
+  #tt-film .tt-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+  #tt-film .tt-embers{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+  #tt-film .tt-glow{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;
+    background:radial-gradient(circle at 50% 54%,rgba(224,123,60,.42),rgba(224,123,60,.10) 32%,rgba(11,10,8,0) 62%)}
+  #tt-film .tt-vig{position:absolute;inset:0;z-index:3;pointer-events:none;box-shadow:inset 0 0 260px 80px rgba(0,0,0,.6)}
+  #tt-film .tt-beats{position:absolute;inset:0;z-index:5}
+  #tt-film .tt-beat{position:absolute;left:0;right:0;padding:0 clamp(20px,5vw,88px);opacity:0;will-change:opacity,transform}
+  #tt-film .tt-hero{bottom:clamp(60px,10vh,120px)}
+  #tt-film .tt-kick{margin:0 0 22px;color:var(--gold);font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:600}
+  #tt-film .tt-word{margin:0;font-weight:800;letter-spacing:-.03em;line-height:.86;color:var(--bone);text-transform:uppercase;font-size:clamp(52px,13vw,230px)}
+  #tt-film .tt-word .r{display:block;overflow:hidden}
+  #tt-film .tt-word .r>span{display:block;will-change:transform}
+  #tt-film .tt-word .thin{-webkit-text-stroke:1px rgba(242,236,222,.6);color:transparent}
+  #tt-film .tt-sub{margin:24px 0 0;max-width:44ch;color:var(--bone);font-size:clamp(15px,1.35vw,19px)}
+  #tt-film .tt-mid,#tt-film .tt-fin{top:50%;transform:translateY(-50%);text-align:center}
+  #tt-film .tt-mid h2{margin:0;color:var(--bone);font-weight:700;font-size:clamp(32px,6vw,104px);line-height:1;letter-spacing:-.025em;text-shadow:0 4px 60px rgba(0,0,0,.5)}
+  #tt-film .tt-fin h2{margin:0;color:var(--bone);font-weight:800;font-size:clamp(40px,10vw,150px);line-height:.94;letter-spacing:-.03em;text-transform:uppercase;text-shadow:0 4px 60px rgba(0,0,0,.55)}
+  #tt-film .tt-mid em,#tt-film .tt-fin em{color:var(--gold);font-style:italic}
+  #tt-film .tt-fin em{text-transform:none}
+  #tt-film .tt-cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:6;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--stone);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+  #tt-film .tt-cue i{width:1px;height:34px;background:linear-gradient(var(--stone),transparent)}
+  @media (prefers-reduced-motion:reduce){
+    #tt-film{height:100vh}
+    #tt-film .tt-stage{position:relative}
+    #tt-film .tt-embers,#tt-film .tt-glow,#tt-film .tt-vig,#tt-film .tt-cue{display:none}
+    #tt-film .tt-beat{opacity:1;position:static;transform:none;padding:40px clamp(20px,5vw,88px)}
+    #tt-film .tt-word .r>span{transform:none}
+  }
+</style>
+
+<script>
+(function(){
+  "use strict";
+  var root=document.getElementById('tt-film'); if(!root) return;
+  var BASE=(window.THEO_FILM_BASE||'');
+  var FRAME_COUNT=308;
+  var FRAME=function(i){ return BASE+'film-frames/f_'+String(i+1).padStart(4,'0')+'.jpg'; };
+  var REDUCED=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var stage=root.querySelector('.tt-stage');
+  var canvas=root.querySelector('.tt-canvas'), ctx=canvas.getContext('2d',{alpha:false});
+  var emb=root.querySelector('.tt-embers'), ec=emb.getContext('2d');
+  var glow=root.querySelector('.tt-glow'), vig=root.querySelector('.tt-vig'), cue=root.querySelector('.tt-cue');
+  var DPR=Math.min(window.devicePixelRatio||1,1.5), CW=0,CH=0,eW=0,eH=0;
+  function size(){ CW=canvas.clientWidth;CH=canvas.clientHeight;canvas.width=Math.round(CW*DPR);canvas.height=Math.round(CH*DPR);ctx.setTransform(DPR,0,0,DPR,0,0);
+    eW=emb.clientWidth;eH=emb.clientHeight;emb.width=Math.round(eW*DPR);emb.height=Math.round(eH*DPR);ec.setTransform(DPR,0,0,DPR,0,0); }
+  size();
+
+  var images=new Array(FRAME_COUNT), loaded=new Array(FRAME_COUNT).fill(false);
+  var bitmaps=new Map(), decoding=new Set(), AHEAD=20, KEEP=30, center=-999, shown=-1;
+  function ensure(c){ if(Math.abs(c-center)<3) return; center=c;
+    for(var i=Math.max(0,c-AHEAD);i<=Math.min(FRAME_COUNT-1,c+AHEAD);i++){ if(bitmaps.has(i)||decoding.has(i)||!loaded[i]) continue; decoding.add(i);
+      (function(i){ createImageBitmap(images[i]).then(function(b){ decoding.delete(i); if(Math.abs(i-center)>KEEP){b.close();return;} bitmaps.set(i,b); if(i===shown) draw(i); }).catch(function(){decoding.delete(i);}); })(i); }
+    bitmaps.forEach(function(b,k){ if(k<c-KEEP||k>c+KEEP){b.close();bitmaps.delete(k);} }); }
+  function near(idx){ if(loaded[idx])return idx; for(var d=1;d<FRAME_COUNT;d++){ if(idx-d>=0&&loaded[idx-d])return idx-d; if(idx+d<FRAME_COUNT&&loaded[idx+d])return idx+d;} return -1; }
+  function cover(s,w,h){ var sc=Math.max(CW/w,CH/h),dw=w*sc,dh=h*sc; ctx.drawImage(s,(CW-dw)/2,(CH-dh)/2,dw,dh); }
+  function draw(idx){ var b=bitmaps.get(idx); if(b){cover(b,b.width,b.height);shown=idx;return;} var n=near(idx); if(n>=0&&images[n]){cover(images[n],images[n].naturalWidth,images[n].naturalHeight);shown=n;} else {ctx.fillStyle='#000';ctx.fillRect(0,0,CW,CH);} }
+
+  var sprite=(function(){var s=document.createElement('canvas');s.width=s.height=32;var c=s.getContext('2d');var g=c.createRadialGradient(16,16,0,16,16,16);g.addColorStop(0,'rgba(255,226,155,.95)');g.addColorStop(.5,'rgba(224,123,60,.5)');g.addColorStop(1,'rgba(224,123,60,0)');c.fillStyle=g;c.fillRect(0,0,32,32);return s;})();
+  var ep=[],EMAX=100; if(!REDUCED){ for(var i=0;i<EMAX;i++){ ep.push({x:Math.random(),y:Math.random(),z:.3+Math.random()*.9,ph:Math.random()*6.28,sp:.3+Math.random()*.8}); } }
+  function emInt(p){ var a=Math.min(1,(p+0.02)/0.06),b=Math.min(1,(0.7-p)/0.12); return Math.max(0,Math.min(a,b)); }
+  function embers(p,t){ if(REDUCED)return; var it=emInt(p); ec.clearRect(0,0,eW,eH); if(it<=0.01)return; var active=Math.floor(EMAX*it),tt=t*0.001;
+    for(var i=0;i<active;i++){var q=ep[i];var x=(q.x*eW)+Math.sin(tt*q.sp+q.ph)*32*q.z;var y=((q.y-tt*0.03*q.sp)%1+1)%1*eH;var sz=2+8*q.z,tw=0.4+0.6*(0.5+0.5*Math.sin(tt*3+q.ph));ec.globalAlpha=tw*it*q.z;ec.drawImage(sprite,x-sz/2,y-sz/2,sz,sz);}
+    ec.globalAlpha=1; }
+
+  var beats=[].map.call(root.querySelectorAll('.tt-beat'),function(el){return{el:el,in:+el.dataset.in,peak:+el.dataset.peak,out:+el.dataset.out,hero:el.classList.contains('tt-hero')};});
+  function env(b,p){ if(p<b.in||p>b.out)return 0; if(p<b.peak)return (p-b.in)/Math.max(1e-4,b.peak-b.in); if(b.out>1.5)return 1; return 1-(p-b.peak)/Math.max(1e-4,b.out-b.peak); }
+  function renderBeats(p){ for(var i=0;i<beats.length;i++){var b=beats[i],a=env(b,p);b.el.style.opacity=a; if(b.hero){b.el.style.transform='translateY('+(-(1-a)*20)+'px)';} else {b.el.style.transform='translateY(calc(-50% + '+((1-a)*16*(p<b.peak?1:-1))+'px))';}} }
+
+  var cur=0,target=0,prog=0;
+  function compute(){ var r=stage.parentNode.getBoundingClientRect(); prog=Math.max(0,Math.min(1,-r.top/(r.height-innerHeight))); target=prog*(FRAME_COUNT-1); }
+  function tick(t){
+    compute(); cur+=(target-cur)*0.16; if(Math.abs(target-cur)<0.01)cur=target;
+    ensure(Math.round(cur)); draw(Math.round(cur)); renderBeats(prog); embers(prog,t||0);
+    if(glow) glow.style.opacity=Math.max(0,1-prog/0.12).toFixed(3);
+    if(vig) vig.style.opacity=(1-Math.max(0,(prog-0.9)/0.1)).toFixed(3);
+    if(cue) cue.style.opacity=Math.max(0,1-prog/0.06).toFixed(2);
+    requestAnimationFrame(tick);
+  }
+
+  // frame pump
+  var next=0,inFlight=0,MAX=12,heroShown=false;
+  function pump(){ while(inFlight<MAX&&next<FRAME_COUNT){ (function(i){ inFlight++; var img=new Image();
+    img.onload=function(){images[i]=img;loaded[i]=true;inFlight--; if(i===0){ensure(0);draw(0);if(!heroShown){heroShown=true;revealHero();}} pump();};
+    img.onerror=function(){inFlight--;pump();}; img.src=FRAME(i); })(next++); } }
+  function revealHero(){ if(REDUCED)return; var rows=root.querySelectorAll('.tt-word .r>span'); for(var i=0;i<rows.length;i++){ (function(el,d){ el.style.transform='translateY(120%)'; el.style.transition='transform 1s cubic-bezier(.22,1,.36,1) '+d+'s'; requestAnimationFrame(function(){ requestAnimationFrame(function(){ el.style.transform='translateY(0)'; }); }); })(rows[i],0.1+i*0.12); }
+    var k=root.querySelector('.tt-kick'); if(k){ k.style.opacity='0'; k.style.transition='opacity .8s ease'; requestAnimationFrame(function(){k.style.opacity='1';}); } }
+
+  window.addEventListener('resize',function(){ size(); compute(); draw(Math.round(cur)); });
+  size(); compute(); cur=target; if(REDUCED){ /* load a few, show first */ }
+  pump(); requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
